@@ -27,10 +27,12 @@ var maps = null;
  * ```
  *
  * @example using via callback
+ * ```javascript
  * require( 'google-maps-api' )( 'your api key', function( maps ) {
  *
  * 	//use the google.maps object as you please
  * })
+ * ```
  */
 module.exports = function( apikey, onComplete ) {
 
