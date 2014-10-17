@@ -16,7 +16,9 @@
   "keywords": [
     "google",
     "maps",
-    "api"
+    "api",
+    "frontend",
+    "browser"
   ],
   "author": "Mikko Haapoja <me@mikkoh.com>",
   "license": "MIT",
