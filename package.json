@@ -1,0 +1,35 @@
+{
+  "name": "google-maps-api",
+  "version": "1.0.0",
+  "description": "Get up and running with the google maps API quickly",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Jam3/google-maps-api.git"
+  },
+  "keywords": [
+    "google",
+    "maps",
+    "api"
+  ],
+  "author": "Mikko Haapoja <me@mikkoh.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Jam3/google-maps-api/issues"
+  },
+  "homepage": "https://github.com/Jam3/google-maps-api",
+  "dependencies": {
+    "domready": "^1.0.7",
+    "promise": "^6.0.1",
+    "scriptjs": "^2.5.7"
+  },
+  "devDependencies": {
+    "brfs": "^1.2.0"
+  }
+}
