@@ -1,6 +1,7 @@
-var mapsapi = require( '../' )( require( './apikey' ) );
+require( '../' )( require( './apikey' ), function( maps ) {
 
-mapsapi().then( function( maps ) {
+	console.log( 'via callback', maps );
+})().then( function( maps ) {
 
-	console.log( maps );
+	console.log( 'via promise', maps );	
 });

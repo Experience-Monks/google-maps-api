@@ -1,9 +1,9 @@
 var script = require( 'scriptjs' ),
 	promise = require( 'promise' );
 
-module.exports = function( apikey, onComplete ) {
+var maps = null;
 
-	var maps = null;
+module.exports = function( apikey, onComplete ) {
 
 	return function() {
 
