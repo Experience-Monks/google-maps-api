@@ -1,6 +1,6 @@
 {
   "name": "google-maps-api",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Get up and running with the google maps API quickly",
   "main": "index.js",
   "directories": {
