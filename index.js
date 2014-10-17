@@ -1,5 +1,4 @@
-var ready = require( 'domready' ),
-	script = require( 'scriptjs' ),
+var script = require( 'scriptjs' ),
 	promise = require( 'promise' );
 
 module.exports = function( apikey, onComplete ) {
@@ -15,18 +14,14 @@ module.exports = function( apikey, onComplete ) {
 				resolve( onOk, onComplete );
 			} else {
 
-				// Google maps API tries to write to the dom therefore the dom needs to be ready
-				ready( function( dom ) {
+				window.$$mapsCB = function() {
 
-					window.$$mapsCB = function() {
+					maps = google.maps;
 
-						maps = google.maps;
-
-						resolve( onOk, onComplete );
-					};
-					
-					script( 'https://maps.googleapis.com/maps/api/js?callback=$$mapsCB&key=' + apikey );
-				});
+					resolve( onOk, onComplete );
+				};
+				
+				script( 'https://maps.googleapis.com/maps/api/js?callback=$$mapsCB&key=' + apikey );
 			}
 		});
 	};
