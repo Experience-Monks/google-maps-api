@@ -3,7 +3,26 @@
 var script = require( 'scriptjs' ),
 	promise = require( 'promise' );
 
-var maps = null;
+var maps = null,
+	callBacks = [];
+
+window.$$mapsCB = function() {
+
+	maps = google.maps;
+
+	for( var i = 0, len = callBacks.length; i < len; i++ ) {
+
+		resolve.apply( undefined, callBacks[ i ] );
+	}
+};
+
+function resolve( onOk, onComplete ) {
+
+	onOk( maps );
+
+	if( onComplete )
+		onComplete( maps );
+}
 
 /** 
  * Load a Google Maps API Object asynchronously. This module will return a Promise.
@@ -45,23 +64,13 @@ module.exports = function( apikey, onComplete ) {
 				resolve( onOk, onComplete );
 			} else {
 
-				window.$$mapsCB = function() {
-
-					maps = google.maps;
-
-					resolve( onOk, onComplete );
-				};
+				callBacks.push( [ onOk, onComplete ] );
 				
-				script( 'https://maps.googleapis.com/maps/api/js?callback=$$mapsCB&key=' + apikey );
+				if( callBacks.length == 1 ){
+
+					script( 'https://maps.googleapis.com/maps/api/js?callback=$$mapsCB&key=' + apikey );
+				}
 			}
 		});
-	};
-	
-	function resolve( onOk, onComplete ) {
-
-		onOk( google.maps );
-
-		if( onComplete )
-			onComplete( google.maps );
-	}	
+	};	
 };
