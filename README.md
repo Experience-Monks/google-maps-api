@@ -13,7 +13,8 @@ Or if you prefer you can simply use the callback instead.
 - \[onComplete\] `function` - A callback which will return the google.maps object  
 
 **Returns**: `Promise` - When this promise resolves it will return the google.maps object  
-**Example**  
+
+##Example 
 using via promise
 
 ```javascript
@@ -25,7 +26,6 @@ mapsapi().then( function( maps ) {
 });
 ```
 
-**Example**  
 using via callback
 ```javascript
 require( 'google-maps-api' )( 'your api key', function( maps ) {
