@@ -7,8 +7,6 @@ module.exports = function( req, onComplete ) {
 	return maps()
 	.then( function( maps ) {
 
-		console.log( 'got maps', maps );
-
 		if( !geocoder )
 			geocoder = new maps.Geocoder();
 	})
