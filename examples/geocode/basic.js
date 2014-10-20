@@ -1,5 +1,5 @@
-var maps = require( '../../' ),
-	geocode = require( '../../geocode' );
+var maps = require( '../../' ), //this should be: require( 'google-maps-api' )
+	geocode = require( '../../geocode' ); //this should be: require( 'google-maps-api/geocode' )
 
 maps( require( '../../test/apikey' ) ); //drop in your API key here instead
 
