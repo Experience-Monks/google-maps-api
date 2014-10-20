@@ -18,6 +18,7 @@ https://developers.google.com/maps/documentation/javascript/reference#GeocoderRe
 
 **Returns**: `Promise` - This promise will return the result same as the onComplete  
 **Example**  
+```javascript
 require( 'google-maps-api' )( 'your api key here' );
 
 require( 'google-maps-api/geocode' )( {
@@ -27,4 +28,4 @@ require( 'google-maps-api/geocode' )( {
 
 	console.log( result );
 });
-
+```
