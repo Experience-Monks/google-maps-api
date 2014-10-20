@@ -1,32 +1,36 @@
-var mapsapi = require( '../' ),
+var test = require( 'prova' ),
+	mapsapi = require( '../' ),
 	apikey = require( './apikey' ),
 	geocode = require( '../geocode' );
 
-mapsapi( apikey )()
-.then( function( maps ) {
+// test getting google maps
+test( 'Get Google Maps', function( t ) {
 
-	console.log( 'via promise', maps );
+	t.plan( 2 );
 
-	geocode( {
+	mapsapi( apikey, function( err, maps ) {
 
-		address: 'chernobyl'
-	})
-	.then( function( result ) {
+		t.ok( maps, 'via callback' );
+	})();
 
-		console.log( 'geocode:', result );
-	})
-	.catch( function( err ) {
+	mapsapi( apikey )()
+	.then( function( maps ) {
 
-		console.log( err.stack );
+		t.ok( maps, 'via promise' );
+
+		// do a test for Geocoding
+		test( 'Geocode', function( t ) {
+
+			t.plan( 1 );
+
+			geocode( {
+
+				address: 'Seinäjoki'
+			})
+			.then( function( result ) {
+
+				t.ok( result, 'received geocode result' );
+			});
+		});
 	});
-
-	return maps;
 });
-
-mapsapi( apikey, function( err, maps ) {
-
-	if( err ) 
-		console.log( err );
-	else	
-		console.log( 'via callback', maps );
-})();

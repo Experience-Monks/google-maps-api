@@ -7,7 +7,7 @@
     "test": "test"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "./node_modules/.bin/prova test/index.js -b"
   },
   "repository": {
     "type": "git",
@@ -31,6 +31,8 @@
     "scriptjs": "^2.5.7"
   },
   "devDependencies": {
-    "brfs": "^1.2.0"
+    "brfs": "^1.2.0",
+    "prova": "^1.14.3",
+    "tape": "^3.0.1"
   }
 }
