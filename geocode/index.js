@@ -1,5 +1,5 @@
 var promise = require( 'promise' ),
-	maps = require( './' )(),
+	maps = require( '../' )(),
 	geocoder;
 
 module.exports = function( req, onComplete ) {
