@@ -34,6 +34,7 @@ function resolve( onOk, onErr, onComplete, err ) {
 	}
 }
 
+
 /** 
  * Load a Google Maps API Object asynchronously. This module will return a Promise.
  * Which will on resolved will return the "google.maps" object.
