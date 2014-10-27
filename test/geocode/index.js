@@ -1,7 +1,7 @@
 var test = require( 'tape' ),
-	mapsapi = require( '../' ),
-	apikey = require( './apikey' ),
-	geocode = require( '../geocode' );
+	mapsapi = require( '../../' ),
+	apikey = require( '../apikey' ),
+	geocode = require( '../../geocode' );
 
 // test getting google maps
 test( 'Get Google Maps', function( t ) {
