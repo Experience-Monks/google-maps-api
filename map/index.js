@@ -9,6 +9,7 @@ var promise = require( 'promise' ),
  * This wraps the Google Maps Map. 
  * 
  * The first parameter you pass in an option object:
+ * ```javascript
  * {
  * 	///REQUIRED///
  * 	element: someDivElement, // You must pass in a div element in which the map's contents will be loaded
@@ -24,6 +25,7 @@ var promise = require( 'promise' ),
  *	// For more options check out
  *	// https://developers.google.com/maps/documentation/javascript/reference#MapOptions
  * }
+ * ```
  * 
  * @param  {Object} opts An option object. See above for variables that should be passed in.
  * @param  {Function} [onComplete] If you prefer not to use promises you can pass in a callback instead. The callback should be in the
@@ -31,6 +33,7 @@ var promise = require( 'promise' ),
  * @return {Promise} This promise will return the result same as the onComplete
  *
  * @example
+ * ```javascript
  * require( 'google-maps-api' )( 'your api key here' );
  *
  * require( 'google-maps-api/map' )( {
@@ -39,8 +42,9 @@ var promise = require( 'promise' ),
  * })
  * .then( function( map ) {
  * 
- * 	
+ * 	// do something with the map here
  * });
+ * ```
  */
 module.exports = function( opts, onComplete ) {
 
