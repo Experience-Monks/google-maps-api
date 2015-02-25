@@ -1,4 +1,4 @@
-var test = require( 'tape' ),
+var test = require( 'prova' ),
 	mapsapi = require( '../../' ),
 	apikey = require( '../apikey' ),
 	geocode = require( '../../geocode' );
@@ -6,12 +6,19 @@ var test = require( 'tape' ),
 // test getting google maps
 test( 'Get Google Maps', function( t ) {
 
-	t.plan( 2 );
+	t.plan( 3 );
 
 	mapsapi( apikey, function( err, maps ) {
 
 		t.ok( maps, 'via callback' );
 	})();
+
+	mapsapi( apikey, [ 'places' ], function( err, maps ) {
+
+		console.log( maps );
+
+		t.ok( maps.places, 'has places' );
+	})();	
 
 	mapsapi( apikey )()
 	.then( function( maps ) {

@@ -1,37 +1,37 @@
 /** @module google-maps-api */
 
 var script = require( 'scriptjs' ),
-	promise = require( 'promise' );
+  promise = require( 'promise' );
 
 var maps = null,
-	callBacks = [],
-	key;
+  callBacks = [],
+  key;
 
 window.$$mapsCB = function() {
 
-	maps = google.maps;
+  maps = google.maps;
 
-	for( var i = 0, len = callBacks.length; i < len; i++ ) {
+  for( var i = 0, len = callBacks.length; i < len; i++ ) {
 
-		resolve.apply( undefined, callBacks[ i ] );
-	}
+    resolve.apply( undefined, callBacks[ i ] );
+  }
 };
 
 function resolve( onOk, onErr, onComplete, err ) {
 
-	if( !err ) {
+  if( !err ) {
 
-		onOk( maps );
+    onOk( maps );
 
-		if( onComplete )
-			onComplete( undefined, maps );
-	} else { 
+    if( onComplete )
+      onComplete( undefined, maps );
+  } else { 
 
-		onErr( err );
+    onErr( err );
 
-		if( onComplete )
-			onComplete( err );
-	}
+    if( onComplete )
+      onComplete( err );
+  }
 }
 
 
@@ -52,7 +52,7 @@ function resolve( onOk, onErr, onComplete, err ) {
  *
  * mapsapi().then( function( maps ) {
  *
- * 	//use the google.maps object as you please
+ *  //use the google.maps object as you please
  * });
  * ```
  *
@@ -60,43 +60,43 @@ function resolve( onOk, onErr, onComplete, err ) {
  * ```javascript
  * require( 'google-maps-api' )( 'your api key', function( maps ) {
  *
- * 	//use the google.maps object as you please
+ *  //use the google.maps object as you please
  * })
  * ```
  */
 module.exports = function( apikey, libraries, onComplete ) {
 
-	key = apikey || key;
-	if (typeof libraries == 'function') {
-	    onComplete = libraries;
-    	libraries = [];
-  	}
+  key = apikey || key;
+  if (typeof libraries == 'function') {
+    onComplete = libraries;
+    libraries = [];
+  }
 
-	return function() {
+  return function() {
 
-		return new promise( function( onOk, onErr ) {
+    return new promise( function( onOk, onErr ) {
 
-			if( !key ) {
+      if( !key ) {
 
-				resolve( onOk, onErr, onComplete, new Error( 'No API key passed to require(\'google-maps-api\')' ) );
-			} else {
+        resolve( onOk, onErr, onComplete, new Error( 'No API key passed to require(\'google-maps-api\')' ) );
+      } else {
 
-				if( maps ) {
+        if( maps ) {
 
-					resolve( onOk, onErr, onComplete );
-				} else {
+          resolve( onOk, onErr, onComplete );
+        } else {
 
-					callBacks.push( [ onOk, onErr, onComplete ] );
-					
-					if( callBacks.length == 1 ){
-						var url = 'https://maps.googleapis.com/maps/api/js?callback=$$mapsCB&key=' + key;
-						if (libraries instanceof Array && libraries.length > 0) {
-							url+='&libraries='+libraries.join(',');
-						}
-						script( url );
-					}
-				}
-			}
-		});
-	};	
+          callBacks.push( [ onOk, onErr, onComplete ] );
+          
+          if( callBacks.length == 1 ){
+            var url = 'https://maps.googleapis.com/maps/api/js?callback=$$mapsCB&key=' + key;
+            if (libraries instanceof Array && libraries.length > 0) {
+              url+='&libraries='+libraries.join(',');
+            }
+            script( url );
+          }
+        }
+      }
+    });
+  };  
 };

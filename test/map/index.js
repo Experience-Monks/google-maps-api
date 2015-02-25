@@ -1,4 +1,4 @@
-var test = require( 'tape' ),
+var test = require( 'prova' ),
 	mapsapi = require( '../../' ),
 	apikey = require( '../apikey' ),
 	map = require( '../../map' ),
