@@ -9,7 +9,20 @@ to the Google Maps Geocoder. For more info visit:
 
 https://developers.google.com/maps/documentation/javascript/reference#GeocoderRequest
 
-**Params**
+## Example
+```javascript
+require( 'google-maps-api' )( 'your api key here' );
+
+require( 'google-maps-api/geocode' )( {
+  address: 'Springfield'
+})
+.then( function( result ) {
+
+  console.log( result );
+});
+```
+
+## API
 
 - req `google.maps.GeocoderRequest` - For more info on this visit 
                                           https://developers.google.com/maps/documentation/javascript/reference#GeocoderRequest  
@@ -17,15 +30,3 @@ https://developers.google.com/maps/documentation/javascript/reference#GeocoderRe
                                 form of ```function( err, data ) {}```  
 
 **Returns**: `Promise` - This promise will return the result same as the onComplete  
-**Example**  
-```javascript
-require( 'google-maps-api' )( 'your api key here' );
-
-require( 'google-maps-api/geocode' )( {
-	address: 'Springfield'
-})
-.then( function( result ) {
-
-	console.log( result );
-});
-```
