@@ -33,3 +33,11 @@ require( 'google-maps-api' )( 'your api key', function( maps ) {
 	//use the google.maps object as you please
 })
 ```
+
+including external google maps libraries
+```javascript
+require( 'google-maps-api' )( 'your api key', ['places'], function( maps ) {
+
+	//the google.maps object will now have the places api (google.maps.places)
+})
+```
