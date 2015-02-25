@@ -64,9 +64,10 @@ function resolve( onOk, onErr, onComplete, err ) {
  * })
  * ```
  */
-module.exports = function( apikey, onComplete ) {
+module.exports = function( apikey, onComplete, libraries ) {
 
 	key = apikey || key;
+	libraries = libraries || [];
 
 	return function() {
 
@@ -85,8 +86,11 @@ module.exports = function( apikey, onComplete ) {
 					callBacks.push( [ onOk, onErr, onComplete ] );
 					
 					if( callBacks.length == 1 ){
-
-						script( 'https://maps.googleapis.com/maps/api/js?callback=$$mapsCB&key=' + key );
+						var url = 'https://maps.googleapis.com/maps/api/js?callback=$$mapsCB&key=' + key;
+						if (libraries instanceof Array && libraries.length > 0) {
+							url+='&libraries='+libraries.join(',');
+						}
+						script( url );
 					}
 				}
 			}
