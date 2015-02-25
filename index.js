@@ -64,10 +64,13 @@ function resolve( onOk, onErr, onComplete, err ) {
  * })
  * ```
  */
-module.exports = function( apikey, onComplete, libraries ) {
+module.exports = function( apikey, libraries, onComplete ) {
 
 	key = apikey || key;
-	libraries = libraries || [];
+	if (typeof libraries == 'function') {
+	    onComplete = libraries;
+    	libraries = [];
+  	}
 
 	return function() {
 
