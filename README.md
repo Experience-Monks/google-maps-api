@@ -40,8 +40,8 @@ require( 'google-maps-api' )( 'your api key', ['places'], function( maps ) {
 
 ## API
 
-- apikey `String` - Your Google Maps API Key  
-- \[libraries\] `Array` -  Optional array of libraries to load such as [ 'places' ]
-- \[onComplete\] `function` - Optional callback which will return the google.maps object  
+- apikey `String | Object` - Your Google Maps API Key or an object of the form `{ client: 'APIClientName', channel: 'APIClientChannel' }`
+- \[libraries\] `Array` -  Optional array of libraries to load such as `[ 'places' ]`
+- \[onComplete\] `function` - Optional callback which will return the google.maps object
 
 **Returns**: `Promise` - When this promise resolves it will return the google.maps object
