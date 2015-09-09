@@ -87,10 +87,21 @@ module.exports = function( apikey, libraries, onComplete ) {
         } else {
 
           callBacks.push( [ onOk, onErr, onComplete ] );
-          
-          if( callBacks.length == 1 ){
-            var url = 'https://maps.googleapis.com/maps/api/js?callback=$$mapsCB&key=' + key;
-            if (libraries instanceof Array && libraries.length > 0) {
+
+          if (callBacks.length == 1) {
+            var auth = '';
+            if (typeof key == 'string') {
+
+              auth = '&key=' + key;
+            } else if (typeof key == 'object') {
+
+              auth = '&' + Object.keys(key).map(function (k) {
+                return k + '=' + encodeURIComponent(key[k]);
+              }).join('&');
+            }
+
+            var url = 'https://maps.googleapis.com/maps/api/js?callback=$$mapsCB' + auth;
+            if (Array.isArray(libraries) && libraries.length > 0) {
               url+='&libraries='+libraries.join(',');
             }
             script( url );
