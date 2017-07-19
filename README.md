@@ -21,6 +21,15 @@ mapsapi().then( function( maps ) {
   //use the google.maps object as you please
 });
 ```
+including external google maps libraries
+```
+var mapsapi = require( 'google-maps-api' )( 'your api key', ['places'] );
+
+mapsapi().then( function( maps ) {
+
+  //use the google.maps object as you please
+});
+```
 
 using via callback
 ```javascript
@@ -29,6 +38,7 @@ require( 'google-maps-api' )( 'your api key', function( maps ) {
   //use the google.maps object as you please
 })
 ```
+
 including external google maps libraries
 ```javascript
 require( 'google-maps-api' )( 'your api key', ['places'], function( maps ) {
